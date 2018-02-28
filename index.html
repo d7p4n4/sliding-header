@@ -1,0 +1,370 @@
+<!doctype html> 
+<html lang="en">
+  <head>
+    <!-- Required meta tags --> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    <!-- Bootstrap CSS --> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+    <!-- font fam -->
+
+    <!-- icon link -->
+    <link href="https://file.myfontastic.com/YgsyJpWno5XLmxwriqWuaU/icons.css" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>    
+    
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <title>Practice page</title> 
+  </head>
+  
+  <body>
+        
+    <!-- main styles -->
+
+    <style>
+      
+      html {
+        font-size: 11.5px;
+        padding: 0;
+        margin: 0;
+      }
+      
+      @media (min-width: 420px) {
+        html {
+          font-size: 13px;
+        }
+      }
+      
+      @media (min-width: 620px) {
+        html {
+          font-size: 15px;
+        }
+      }
+      
+      @media (min-width: 980px) {
+        html {
+          font-size: 17.5px;
+        }
+      }
+      
+      @media (min-width: 1200px) {
+        html {
+          font-size: 20px;
+        }
+      }
+    
+     a {
+        text-decoration: none;
+        color: inherit;
+      }
+      
+      a:hover {
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
+    
+    <style>
+      *, *:after, *:before {
+        box-sizing: border-box;
+      }
+      
+      .intro {
+        position: fixed;
+        z-index: 10;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        background: #2a2e39;
+        transition: transform .6s;
+        -webkit-transition: transform .6s;
+        transition-timing-function: cubic-bezier(.7,0,.3,1);
+      }
+      
+      .container-open .intro {
+        transform: translate3d(0, -100%, 0) translate3d(0, 12.5rem, 0);
+        -webkit-transform: translate3d(0, -100%, 0) translate3d(0, 12.5rem, 0);
+      }
+      
+      .intro-image {
+        position: absolute;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 120%;
+        width: auto;
+        height: auto;
+        opacity: .8;
+        transition: transform .6s, opacity .6s;
+        transition-timing-function: cubic-bezier(.7, 0, .3, 1);
+      }
+      
+      .container-open .intro-image {
+        opacity: 0;
+        transform: translate3d(0, 20%, 0);
+      }
+      
+      .intro-content {
+        position: absolute;
+        bottom: 0;
+        padding: 1.8rem;
+        font-size: 1.2rem;
+      }
+      
+      .intro-title {
+        margin: 0 0 1rem;
+        font-weight: 900;
+        font-size: 4rem;
+        font-family: "playfair display";
+        line-height: 1;
+        color: rgb(210,210,210);
+      }
+      
+      .intro-subtitle {
+        display: flex;
+        align-items: center;
+      }
+      
+      .intro-description {
+        margin: 0 auto 0 1rem;
+        line-height: 1.2;
+      }
+      
+      .trigger {
+        position: relative;
+        overflow: hidden;
+        margin: 0 0 0 1rem;
+        padding: 0;
+        width: 2rem;
+        height: 2rem;
+        outline: none;
+        border: none;
+        background: none;
+        flex: none;
+      }
+      
+      .icon rect,
+      .icon line {
+        stroke: #dbdbdb;
+        fill: none;
+        stroke-width: .1rem;
+      }
+      
+      .icon {
+        transition: opacity .3s, transform.3s;
+        transform-origin: center center;
+      }
+      
+      .icon-cross,
+      .trigger-active .icon-grid {
+        opacity: 0;
+        transform: scale3d(.5,.5,1);
+      }
+      
+      .trigger-active .icon-cross {
+        opacity: 1;
+        transform: scale3d(1,1,1);
+      }
+      
+      .items-wrap {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 12.5rem .25rem 0;
+        background: #2a2e39;
+      }
+      
+      .items-wrap::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #2a2e39;
+        content: "";
+        transition: opacity .6s;
+        transition-timing-function: cubic-bezier(.7,0,.3,1);
+        pointer-events: none;
+      }
+      
+      .container-open .items-wrap::after {
+        opacity: 0;
+      }
+      
+      .item {
+        position: relative;
+        overflow: hidden;
+        height: 22vw;
+        flex: 1 0 25%;
+        outline: none;
+        border: .25rem solid #2a2e39;
+        background: #2a2e39;
+      }
+      
+      .item_image {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        min-height: 100%;
+        width: 100%;
+        opacity: .7;
+        transition: transform .5s, opacity .5s;
+        transform: translate3d(0,-50%,0) scale3d(1.2,1.2,1);
+      }
+      
+      .item:hover .item_image {
+        opacity: 1;
+        transform: translate3d(0,-50%,0);
+      }
+      
+      .item_title {
+        position: absolute;
+        bottom: 0;
+        padding: 1rem;
+        margin: 0;
+        color: #dbdbdb;
+        font-size: 1.8rem;
+        font-family: "playfair display";
+        line-height: 1;
+        transition: transform .3s, opacity .3s;
+      }
+      
+      .item:hover .item_title {
+        opacity: 0;
+        transform: translate3d(0,1rem,0);
+      }
+    </style>
+    
+    <div id="container">
+    <header class="intro">
+      <img class="intro-image" src="assets/glacier.jpg" alt="Iceland glacier"/>
+      
+      <div class="intro-content">
+        <h1 class="intro-title">Essential feelings</h1>
+        
+        <div class="intro-subtitle">
+          <div class="codrops-links"></div>
+          <div class="intro-description"></div>
+          
+          <button class="trigger">
+            <svg width="100%" height="100%" viewBox="0 0 60 60">
+              <g class="icon icon-grid">
+                <rect x="32.5" y="5.5" width="22" height="22"/>
+                <rect x="4.5" y="5.5" width="22" height="22"/>
+                <rect x="32.5" y="33.5" width="22" height="22"/>
+                <rect x="4.5" y="33.5" width="22" height="22"/>
+              </g>
+              <g class="icon icon-cross">
+                <line x1="4.5" y1="55.5" x2="54.953" y2="5.046"/>
+                <line x1="54.953" y1="55.5" x2="4.5" y2="5.047"/>
+              </g>
+            </svg>
+            
+            <span>View content</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    <section class="items-wrap">
+    
+      <a href="#" class="item">
+        <img class="item_image" src="assets/img01.jpg" alt="item01">
+        <h2 class="item_title">Magnificence</h2>
+      </a>
+      
+      <a href="#" class="item">
+        <img class="item_image" src="assets/img02.jpg" alt="item02">
+        <h2 class="item_title">Electrifying</h2>
+      </a>      
+      
+      <a href="#" class="item">
+        <img class="item_image" src="assets/img03.jpg" alt="item02">
+        <h2 class="item_title">Dinamic</h2>
+      </a>      
+
+      <a href="#" class="item">
+        <img class="item_image" src="assets/img04.jpg" alt="item02">
+        <h2 class="item_title">Crucial</h2>
+      </a>      
+
+      <a href="#" class="item">
+        <img class="item_image" src="assets/img05.jpg" alt="item02">
+        <h2 class="item_title">Awe-inspiring</h2>
+      </a>      
+
+      <a href="#" class="item">
+        <img class="item_image" src="assets/img06.jpg" alt="item02">
+        <h2 class="item_title">Serene</h2>
+      </a>      
+
+      <a href="#" class="item">
+        <img class="item_image" src="assets/img07.jpg" alt="item02">
+        <h2 class="item_title">Vulnerable</h2>
+      </a>      
+
+      <a href="#" class="item">
+        <img class="item_image" src="assets/img08.jpg" alt="item02">
+        <h2 class="item_title">Bountiful</h2>
+      </a>      
+    
+    </section>
+    </div>
+    
+    <script src="classie.js"></script>
+    <script>
+      window.onload = function() {
+      
+      (function() {
+        
+        var container = document.getElementById('container');
+        var trigger = container.querySelector('button.trigger');
+        
+        function toggleContent() {
+          if(classie.has(container, 'container-open')) {
+            classie.remove(container, 'container-open');
+            classie.remove(trigger, 'trigger-active');
+            window.addEventListener('scroll', noscroll);
+          } else {
+          classie.add(container, 'container-open');
+          classie.add(trigger, 'trigger-active');
+          window.removeEventListener('scroll', noscroll);
+          }
+        }
+        
+        function noscroll() {
+          window.scrollTo(0,0);
+        }
+        
+        // reset scrolling position
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        
+        // disable scrolling 
+        window.addEventListener('scroll', noscroll);
+        
+        trigger.addEventListener('click', toggleContent);        
+        
+      })();
+        
+       /* $('.trigger').on('click', function() {
+          if($('#container').hasClass('container-open')) {
+            $(this).removeClass('trigger-active');
+            $('#container').removeClass('container-open')
+          } else {
+            $(this).addClass('trigger-active');
+            $('#container').addClass('container-open');
+          }
+        })*/
+      }
+    </script>
+    
+        
+ <!-- Optional JavaScript --> 
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+  </body> 
+</html>
